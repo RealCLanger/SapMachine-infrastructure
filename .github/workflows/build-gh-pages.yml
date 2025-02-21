@@ -26,6 +26,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: trigger build in SapMachine repo
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: '${{ secrets.PAT_TOKEN }}'
+          repository: RealCLanger/SapMachine
+          event-type: gh-page-build
       - name: Checkout
         uses: actions/checkout@v4
         with:
